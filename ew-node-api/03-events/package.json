@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "events": "^3.3.0",
+    "gitignore": "^0.6.0"
+  },
+  "scripts": {
+    "dev":"node index.js" 
+  }
+  
+}
