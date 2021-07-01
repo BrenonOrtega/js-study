@@ -1,0 +1,1 @@
+import { getCharacters } from "./service";

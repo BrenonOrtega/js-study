@@ -1,0 +1,13 @@
+{
+  "name": "04-lists",
+  "version": "1.0.0",
+  "main": "service.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node service.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
