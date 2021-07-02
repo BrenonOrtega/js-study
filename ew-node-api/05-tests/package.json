@@ -1,0 +1,14 @@
+{
+  "name": "05-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.1",
+    "nock": "^13.1.0"
+  }
+}

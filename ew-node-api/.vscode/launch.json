@@ -12,7 +12,7 @@
                 "<node_internals>/**",
                 "node_modules/**"
             ],
-            "program": "${workspaceFolder}\\04-lists\\4-reduce.js"
+            "program": "${workspaceFolder}\\${relativeFileDirname}\\${fileBasename}"
         }
     ]
 }
