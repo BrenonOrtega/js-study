@@ -10,6 +10,12 @@ const DEFAULT_DATABASE_HERO = {
     power:'speed'
 }
 
+const DEFAULT_UPDATE_HERO = {
+    id:1,
+    name:'batima',
+    power:'cash'
+}
+
 describe('Repositories tests', () => {
     before(async() => {
         assert.throws(() => repository.filePath, ReferenceError);
@@ -48,18 +54,16 @@ describe('Repositories tests', () => {
     });
 
     it('updating a hero', async () => {
-        const name = 'barry allen' ;
+        const name = 'bruce wayne';
 
         const expected = {
+            ...DEFAULT_UPDATE_HERO,
             name,
-            ...DEFAULT_DATABASE_HERO, 
         };
-
-        await repository.update(expected);
+        await repository.save(DEFAULT_UPDATE_HERO);
+        await repository.update(expected.id, expected);
         const [actual] = await repository.get(expected.id);
 
         assert.deepStrictEqual(actual, expected);        
     });
-
-
 });

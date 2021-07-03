@@ -67,15 +67,16 @@ class Repository {
         throw Error('this id does not exist');
     }
 
-    async update(data) {
-        if(!data) {
-            throw ReferenceError("data reference is not set to an object");
+    async update(id, modifications) {
+        if(!id) {
+            throw ReferenceError("id is missing");
         }
-        const content = []//await this.get();
-        const index = content.findIndex(entry => entry.id === data.id);
+         
+        const content = await this.get();
+        const index = content.findIndex(entry => entry.id === id);
 
         if (index !== -1) {
-            content[index] = {...data};
+            content[index] = { ...content[index], ...modifications};
         }
         return await this.#saveContent(content); 
     }
