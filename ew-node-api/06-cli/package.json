@@ -10,5 +10,9 @@
   "dependencies": {
     "commander": "^8.0.0",
     "esm": "^3.2.25"
+  },
+  "scripts": {
+    "dev": "node index.js",
+    "test": "yarn mocha tests.js"
   }
 }
