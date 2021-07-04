@@ -1,5 +1,5 @@
 import fsAsync from 'fs/promises';
-
+import Path from 'path';
 class Repository {
     #filePath
     constructor(filePath) {
@@ -21,7 +21,7 @@ class Repository {
         }
     }
     
-    async get(id) {
+    async read(id) {
         const readFile = await fsAsync.readFile(this.filePath, 'utf-8');
         const result = JSON.parse(readFile.toString());
         const filteredResult = result.filter(result => (id ? (result.id === id) : true));
@@ -36,12 +36,12 @@ class Repository {
     }
 
     async save(data) {
-        const query = await this.get();
-        const id = data.id <= 2? data.id : (Math.random() * 10);
+        const query = await this.read();
+        const id = data.id <= 2 ? data.id : Date.now();
 
         const hero = {
-            id,
             ...data,
+            id,
         };
 
         const content = [
@@ -56,7 +56,7 @@ class Repository {
             return await this.#saveContent([]);
         }
 
-        const content = await this.get();
+        const content = await this.read();
         const index = content.findIndex(entry => entry.id === id);
 
         if(index !== -1) {
@@ -68,11 +68,12 @@ class Repository {
     }
 
     async update(id, modifications) {
+
         if(!id) {
             throw ReferenceError("id is missing");
         }
          
-        const content = await this.get();
+        const content = await this.read();
         const index = content.findIndex(entry => entry.id === id);
 
         if (index !== -1) {

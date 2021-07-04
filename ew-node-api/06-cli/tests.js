@@ -26,7 +26,7 @@ describe('Repositories tests', () => {
 
     it('reading the first register of a hero', async () => {
 
-        const [actual] = await repository.get();
+        const [actual] = await repository.read();
         const expected = DEFAULT_DATABASE_HERO;
         
         assert.deepStrictEqual(actual, expected);
@@ -38,7 +38,7 @@ describe('Repositories tests', () => {
             id:2
         };
         await repository.save(expected);
-        const [actual] = await repository.get(expected.id);
+        const [actual] = await repository.read(expected.id);
 
         assert.deepStrictEqual(actual, expected);
     }); 
@@ -48,7 +48,7 @@ describe('Repositories tests', () => {
         const heroToDelete = DEFAULT_DATABASE_HERO;
 
         await repository.delete(heroToDelete.id);
-        const [actual] = await repository.get(heroToDelete.id);
+        const [actual] = await repository.read(heroToDelete.id);
 
         assert.deepStrictEqual(actual, expected);
     });
@@ -62,7 +62,7 @@ describe('Repositories tests', () => {
         };
         await repository.save(DEFAULT_UPDATE_HERO);
         await repository.update(expected.id, expected);
-        const [actual] = await repository.get(expected.id);
+        const [actual] = await repository.read(expected.id);
 
         assert.deepStrictEqual(actual, expected);        
     });
