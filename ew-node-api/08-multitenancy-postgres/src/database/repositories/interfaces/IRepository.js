@@ -1,4 +1,4 @@
-import NotImplementedException from "../../shared/exceptions/NotImplementedException.js";
+import NotImplementedException from "../../../shared/exceptions/NotImplementedException.js";
 
 export default class IRepository {
     constructor() {

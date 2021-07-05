@@ -12,8 +12,8 @@ const driver = new Sequelize(
     process.env.POSTGRES_USER,
     process.env.POSTGRES_PASSWORD, 
     {
-        host:'localhost',
-        port: 5431,
+        host:process.env.POSTGRES_HOST,
+        port: process.env.POSTGRES_PORT,
         dialect: 'postgres',
         quoteIdentifier:false,
         operatorAliases:false,
@@ -42,10 +42,15 @@ const main = async () => {
         timestamps: false,
     });
 
-    await heroes.sync();
-
-    const result = await  heroes.findAll({ raw:true });
-    console.log('heroes', result);
+    try {
+        await heroes.sync();
+    
+        const result = await  heroes.findAll({ raw:true });
+        console.log('heroes', result);
+        
+    } catch (error) {
+        console.error(error);
+    }
 };
 
 main();

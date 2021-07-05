@@ -1,4 +1,4 @@
-import IRepository from "../interfaces/IRepository.js";
+import IRepository from "../../interfaces/IRepository.js";
 
 export default class MongoRepository extends IRepository {
     constructor() {

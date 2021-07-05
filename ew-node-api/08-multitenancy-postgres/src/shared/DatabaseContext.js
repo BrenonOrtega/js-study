@@ -1,4 +1,4 @@
-import IRepository from "../repositories/interfaces/IRepository.js"
+import IRepository from "../database/repositories/interfaces/IRepository.js"
 
 export default class DatabaseContext extends IRepository{
     #_repository;
