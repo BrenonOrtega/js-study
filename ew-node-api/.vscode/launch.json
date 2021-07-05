@@ -12,7 +12,8 @@
                 "<node_internals>/**",
                 "node_modules/**"
             ],
-            "program": "${workspaceFolder}\\${relativeFileDirname}\\${fileBasename}"
+            "program": "${workspaceFolder}\\${relativeFileDirname}\\${fileBasename}",
+            "args": ["-c", "save", "-n", "superman", "-p", "super"]
         }
     ]
 }
