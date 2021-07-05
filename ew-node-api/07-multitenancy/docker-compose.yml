@@ -2,6 +2,10 @@ version: "3"
 services:
   postgres:
     image: postgres
+    deploy:
+      resources:
+        limits:
+          memory: 300M
     ports: 
       - "5431:5432"
     environment: 
@@ -15,6 +19,10 @@ services:
     image: mongo
     ports: 
       - "27017:27017"
+    deploy:
+      resources:
+        limits:
+          memory: 300M
     environment: 
       MONGO_INITDB_ROOT_USERNAME: "root"
       MONGO_INITDB_ROOT_PASSWORD: "root"
