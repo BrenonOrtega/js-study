@@ -24,3 +24,8 @@ SELECT * FROM tbl_heroes WHERE id=1;
 UPDATE tbl_heroes SET name='all might', power='one for all' WHERE id=2;
 
 DELETE FROM tbl_heroes WHERE id=5;
+
+/* Creates an admin user for app */
+CREATE USER admin_user WITH LOGIN PASSWORD 'adminpassword';
+
+GRANT SELECT, UPDATE, INSERT, DELETE ON tbl_heroes TO admin_user;
