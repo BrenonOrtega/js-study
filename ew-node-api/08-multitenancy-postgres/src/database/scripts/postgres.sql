@@ -21,6 +21,7 @@ SELECT * FROM tbl_heroes WHERE name='flash';
 
 SELECT * FROM tbl_heroes WHERE id=1;
 
+
 UPDATE tbl_heroes SET name='all might', power='one for all' WHERE id=2;
 
 DELETE FROM tbl_heroes WHERE id=5;
