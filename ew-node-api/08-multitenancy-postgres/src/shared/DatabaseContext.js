@@ -1,4 +1,5 @@
 import IRepository from "../database/repositories/interfaces/IRepository.js"
+import NotImplementedException from "./exceptions/NotImplementedException.js";
 
 export default class DatabaseContext extends IRepository{
     #_repository;
@@ -27,7 +28,7 @@ export default class DatabaseContext extends IRepository{
         throw new NotImplementedException();
     }
 
-    isConnected(){
+    isConnected() {
         return this.#_repository.isConnected();
     }
 

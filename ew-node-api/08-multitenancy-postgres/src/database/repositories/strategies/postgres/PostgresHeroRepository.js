@@ -1,30 +1,33 @@
-import { Sequelize } from "sequelize/types";
+import { DataTypes } from "sequelize";
 import IRepository from "../../interfaces/IRepository.js";
 
 export default class PostgresHeroRepository extends IRepository {
+    #_driver;
+    #_heroes;
     constructor(postgresDriver) {
         super();
         this.#_driver = postgresDriver;
-        this.#_heroes = await this.#defineModel(postgresDriver);
+        this.#_heroes = this.#defineModel(postgresDriver);
+        this.#_heroes.sync();
     }
 
-    create(data) {
-        console.log("created on postgres");
+    async create(data) {
+        await this.#_driver.create(data);
     }
 
-    read(id) {
+    async read(id) {
         console.log("read on postgres");
     }
 
-    readAll() {
+    async readAll() {
         this.#_heroes.findAll({raw: true});
     }
     
-    update(id, modelData) {
+    async update(id, modelData) {
         console.log("updating one on postgres");
     }
     
-    delete(id) {
+    async delete(id) {
         console.log("deleting one on postgres");
     }
     
@@ -40,17 +43,17 @@ export default class PostgresHeroRepository extends IRepository {
     #defineModel(driver) {
         return driver.define('heroes', {
             id: {
-                type: Sequelize.INTEGER,
+                type: DataTypes.INTEGER,
                 required: true,
                 primaryKey:true,
                 autoIncrement:true,
             },
             name: {
-                type: Sequelize.STRING(70),
+                type: DataTypes.STRING(70),
                 required: true,
             }, 
             power: {
-                type: Sequelize.STRING(70),
+                type: DataTypes.STRING(70),
                 required: true,
             },
         }, {
